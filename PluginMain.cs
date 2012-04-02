@@ -240,7 +240,10 @@ namespace CustomMonsters
             Custom.value = CMType.Value ?? Custom.value;
             Custom.onFire = CMType.OnFire ?? Custom.onFire;
             Custom.poisoned = CMType.Poisoned ?? Custom.poisoned;
-
+            foreach (int i in CMType.ImmuneBuffs)
+            {
+                Custom.buffImmune[i] = true;
+            }
             if (modlevel == 0 && CMType.SpawnMessage != "")
                 TShockAPI.TShock.Utils.Broadcast(CMType.SpawnMessage, Color.MediumPurple);
             CustomMonsters.Add(new CustomMonster(npcid, modlevel, CMType));
