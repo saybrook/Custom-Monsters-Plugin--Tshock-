@@ -1080,6 +1080,17 @@ namespace CustomMonsters
                                             CMType.Poisoned = poisoned;
                                         break;
                                     }
+                            case "buffimmune":
+                                    {
+                                        string string1 = CMFieldAndVal.Split(':')[1];
+                                        string[] string2 = string1.Split(',');
+                                        int[] buffs = new int[string2.Length];
+                                        for (int i = 0; i < buffs.Length; i++)
+                                        {
+                                            buffs[i] = int.Parse(string2[i]);
+                                        }
+                                        break;
+                                    }
                             default:
                                 CMType.SpawnMessage = CMFieldAndVal;
                                         break;
