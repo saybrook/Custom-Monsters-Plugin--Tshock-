@@ -240,7 +240,10 @@ namespace CustomMonsters
             Custom.value = CMType.Value ?? Custom.value;
             Custom.onFire = CMType.OnFire ?? Custom.onFire;
             Custom.poisoned = CMType.Poisoned ?? Custom.poisoned;
-
+            foreach (int i in CMType.ImmuneBuffs)
+            {
+                Custom.buffImmune[i] = true;
+            }
             if (modlevel == 0 && CMType.SpawnMessage != "")
                 TShockAPI.TShock.Utils.Broadcast(CMType.SpawnMessage, Color.MediumPurple);
             CustomMonsters.Add(new CustomMonster(npcid, modlevel, CMType));
@@ -1078,6 +1081,17 @@ namespace CustomMonsters
                                         bool poisoned;
                                         if (bool.TryParse(CMFieldAndVal.Split(':')[1], out poisoned))
                                             CMType.Poisoned = poisoned;
+                                        break;
+                                    }
+                            case "buffimmune":
+                                    {
+                                        string string1 = CMFieldAndVal.Split(':')[1];
+                                        string[] string2 = string1.Split(',');
+                                        int[] buffs = new int[string2.Length];
+                                        for (int i = 0; i < buffs.Length; i++)
+                                        {
+                                            buffs[i] = int.Parse(string2[i]);
+                                        }
                                         break;
                                     }
                             default:

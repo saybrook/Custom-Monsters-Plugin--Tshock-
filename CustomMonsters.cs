@@ -186,6 +186,8 @@ namespace CustomMonsters
 
         internal bool? OnFire { get; set; }
         internal bool? Poisoned { get; set; }
+        
+        internal int[] ImmuneBuffs { get; set; }
 
         public CustomMonsterType(string name ="",int basetype=1)
         {
@@ -225,6 +227,8 @@ namespace CustomMonsters
 
             OnFire = null;
             Poisoned = null;
+            
+            ImmuneBuffs = new int[0];
         }
     }
 }
